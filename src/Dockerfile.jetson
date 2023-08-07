@@ -1,0 +1,18 @@
+FROM nvcr.io/nvidia/l4t-pytorch:r35.1.0-pth1.13-py3
+LABEL org.opencontainers.image.source=https://github.com/jfhack/upscaler
+
+RUN apt-get update
+RUN apt-get install -y build-essential curl git libgl1-mesa-glx libglib2.0-0
+RUN apt-get install -y python-is-python3
+RUN python -m pip install --upgrade pip
+ENV LD_LIBRARY_PATH="/usr/local/lib/python3.8/dist-packages/opencv_python.libs/:${LD_LIBRARY_PATH}"
+ADD . /core
+WORKDIR /core/rudalle
+ENV PATH="/root/.cargo/bin:${PATH}"
+RUN ./prepare.sh
+WORKDIR /core/gfpgan
+RUN ./prepare.sh
+WORKDIR /core/realesrgan
+RUN ./prepare.sh
+WORKDIR /core
+ENTRYPOINT ["/core/upscaler"]

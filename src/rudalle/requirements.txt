@@ -1,0 +1,3 @@
+rudalle
+huggingface_hub
+tqdm
