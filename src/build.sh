@@ -6,8 +6,8 @@
 
 if [ -f "/etc/nv_tegra_release" ]; then
     echo "Building for Jetson/ARM"
-    DOCKER_BUILDKIT=0 docker build -t ghcr.io/jfhack/upscaler:latest -f Dockerfile.jetson .
+    DOCKER_BUILDKIT=0 docker build --platform linux/arm64 -t ghcr.io/jfhack/upscaler:latest -f Dockerfile.jetson .
 else
     echo "Building for x86-64"
-    DOCKER_BUILDKIT=0 docker build -t ghcr.io/jfhack/upscaler:latest .
+    DOCKER_BUILDKIT=0 docker build --platform linux/amd64 -t ghcr.io/jfhack/upscaler:latest .
 fi
