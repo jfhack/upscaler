@@ -110,7 +110,7 @@ However, please take into account that the PyTorch extensions required for [Basi
    [source](https://stackoverflow.com/a/75629058/2913839)
 
 3. **Use the Appropriate Environment Variable:**<br>
-   You'll also need to use the environment variable `DOCKER_BUILDKIT=0`, but the script is already configured to use it
+   You'll also need to use the environment variable `DOCKER_BUILDKIT=0`, but the script is already configured to use it<br>
    [source](https://stackoverflow.com/a/61737404/2913839)
 
 By following these instructions, you'll ensure that the necessary conditions are met to build the Docker image
